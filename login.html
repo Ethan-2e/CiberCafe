@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+
+    <main class="login-panel">
+        <h1>Iniciar sesión</h1>
+        <p>Ingresa con una cuenta de ejemplo según el rol que quieras probar</p>
+
+        <form action="#">
+
+            <div class="campo">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario" value="operador@nova.cl">
+            </div>
+
+            <div class="campo">
+                <label for="clave">Contraseña</label>
+                <input type="password" id="clave" name="clave" value="nova1234">
+            </div>
+
+            <div class="opciones">
+                <label><input type="checkbox" checked>Recordarme</label>
+                <a href="#" onclick="return false">Olvidé mi contraseña</a>
+            </div>
+            <button class="btn" type="submit">Ingresar</button>
+        </form>
+
+        <div class="demo">
+            <p>Apretar botones pls, no es login real aún</p>
+
+            <div class="rol">
+                <a href="#">
+                    <b>cliente@nova.cl</b>
+                    <small>Ve las salas, puestos y las especificaciones de los pc</small>
+                </a>
+
+                <a href="#">
+                    <b>operador@nova.cl</b>
+                    <small>Panel del día: Ocupación, sesiones, reservas y problemas</small>
+                </a>
+
+                <a href="#">
+                    <b>admin@nova,cl</b>
+                    <small>Accede igual que el operador por agora</small>
+                </a>
+            </div>
+
+        </div>
+
+        <p class="volver"> <a href="index.html">Volver a inicio</a> </p>
+
+    </main>
+    
+</body>
+</html>
