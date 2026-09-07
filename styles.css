@@ -13,11 +13,10 @@ body {
 nav {
     width: 100%;
     padding: 1rem 5%;
+    margin-bottom: 2rem;
     background-color: rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
-    margin-bottom: 2rem;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -26,7 +25,6 @@ nav {
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #fff;
     letter-spacing: 1px;
 }
 
@@ -36,37 +34,226 @@ nav {
     gap: 2rem;
 }
 
-.nav-links li a {
+.nav-links a {
     text-decoration: none;
     color: #fff;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: 0.3s;
 }
 
-.nav-links li a:hover {
+.nav-links a:hover {
     color: #7e7d7d;
 }
 
-.btns {
-    display: flex;
-    gap: 1rem;
+.nav-links .button-login {
+    color: azure;
 }
 
-.btn {
-    padding: 0.5rem 1rem;
-    background-color: #1e293b;
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    background: none;
     border: none;
-    border-radius: 5px;
-    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: 500;
-    font-size: 1rem;
 }
 
-.btn:hover {
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.button-login,
+.button-reservar {
+    border: 1px solid azure;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: azure;
+    border-radius: 10px;
+    transition: 0.37s;
+}
+
+.button-login:hover,
+.button-reservar:hover {
+    background-color: #1e293b;
+}
+
+.first-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    text-align: center;
+}
+
+h1 {
+    padding: 10px;
+}
+
+.caption-reservar {
+    padding: 5px 20px 25px;
+}
+
+.carousel {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 0.5rem;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 0.5rem;
+}
+
+.box-sala-general,
+.box-zona-gamer,
+.box-sala-grupal {
+    width: 100%;
+    max-width: 320px;
+    height: 320px;
+    border-radius: 15px;
+}
+
+.box-sala-general {
+    background: #1e293b;
+}
+
+.box-zona-gamer {
+    background: #312e81;
+}
+
+.box-sala-grupal {
+    background: #0e7490;
+}
+
+.slide-info {
+    padding: 1rem;
+}
+
+.slide-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+}
+
+.slide-info p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 32%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: #1e293b;
+    border: 1px solid azure;
+    color: azure;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    z-index: 1;
+}
+
+.prev-btn {
+    left: 0.5rem;
+}
+
+.next-btn {
+    right: 0.5rem;
+}
+
+.carousel-btn:hover {
     background-color: #334155;
 }
 
+@media (max-width: 640px) {
+    body {
+        overflow-x: hidden;
+    }
 
+    nav {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 1rem 4%;
+    }
 
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        padding: 1rem 0 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .first-box {
+        height: auto;
+        padding: 2rem 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .carousel {
+        overflow: visible;
+        padding: 3rem 1rem;
+    }
+
+    .carousel-track {
+        transform: none !important;
+        gap: 2rem;
+    }
+
+    .carousel-slide {
+        flex: 1;
+        padding: 0;
+    }
+
+    .carousel-slide.clone {
+        display: none;
+    }
+
+    .box-sala-general,
+    .box-zona-gamer,
+    .box-sala-grupal {
+        width: 100%;
+        max-width: none;
+    }
+
+    .carousel-btn {
+        display: none;
+    }
+}

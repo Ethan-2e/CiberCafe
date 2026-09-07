@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="styles.css">
@@ -10,78 +11,129 @@
         <header>
             <nav>
                 <div class="logo">Cibercafé Nova</div>
-                <ul class="nav-links">
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Salas</a></li>
-                    <li><a href="#">Panel</a></li>
-                    <li><a href="login.html">Ingresar</a></li>
+                    <li><a href="#">Disponibilidad</a></li>
+                    <li><a class="button-login" href="login.html">Ingresar</a></li>
                 </ul>
-                <div class="btns">
-                    <button class="btn">Iniciar Sesión</button>
-                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </header>
 
+       
         <main>
-            <section class="portada">
-                <h1>Sistema de administración</h1>
-
-            <div class="stats">
-                <div class="stat"> <b>30</b> <span>Computadores</span> </div>
-                <div class="stat"> <b>3</b> <span>Salas</span> </div>
-                <div class="stat"> <b>0</b> <span>En uso</span> </div>
-                <div class="stat"> <b>0</b> <span>Incidencias</span> </div>
+            <div class="first-box">
+                <h1>TU ESPACIO DE TRABAJO, ESTUDIO Y ALTO RENDIMIENTO</h1>
+                <p class="caption-reservar">Reserva tu puesto</p>
+                <div >
+                    <a class="button-reservar" href="#">Reservar ahora</a>
+                </div>
             </div>
 
-            </section>
+            <section class="carousel">
+                <button class="carousel-btn prev-btn">&#10094;</button>
 
+                <div class="carousel-track">
 
-            <section class="seccion">
-                <h2>Salas del local</h2>
-
-                <div class="tarjeta">
-                    <h3>Zona General</h3>
-                    <p>10 puestos de uso cotidiano: Navegación - Estudio - Trabajo</p>
-                    <div class="fila-puestos">
-                        <span class="occ lib">1</span> <span class="occ lib">2</span>
-                        <span class="occ lib">3</span> <span class="occ lib">4</span>
-                        <span class="occ lib">5</span> <span class="occ lib">6</span>
-                        <span class="occ lib">7</span> <span class="occ lib">8</span>
-                        <span class="occ lib">9</span> <span class="occ lib">10</span>
-                    </div>
-                    <p style="margin-bottom:0;">Estados: todos full lobres</p>
-                </div>
-
-                <div class="tarjeta">
-                    <h3>Zona Gamer</h3>
-                    <p>10 puestos con equipos de mayor rendimiento.</p>
-                    <div class="fila-puestos">
-                        <span class="occ lib">1</span> <span class="occ lib">2</span>
-                        <span class="occ lib">3</span> <span class="occ lib">4</span>
-                        <span class="occ lib">5</span> <span class="occ lib">6</span>
-                        <span class="occ lib">7</span> <span class="occ lib">8</span>
-                        <span class="occ lib">9</span> <span class="occ lib">10</span>
-                    </div>
-                    <p>Estado: todos full libres</p>
-
-                    <div class="tarjeta">
-                        <h3>Sala equipos</h3>
-                        <p>10 puestos amplios para grupos, con pizarra o proyector.</p>
-                        <div class="fila-puestos">
-                            <span class="occ lib">1</span> <span class="occ lib">2</span>
-                            <span class="occ lib">3</span> <span class="occ lib">4</span>
-                            <span class="occ lib">5</span> <span class="occ lib">6</span>
-                            <span class="occ lib">7</span> <span class="occ lib">8</span>
-                            <span class="occ lib">9</span> <span class="occ lib">10</span>
+                    <div class="carousel-slide">
+                        <div class="box-sala-general"></div>
+                        <div class="slide-info">
+                            <h3>Sala General</h3>
+                            <p>Puestos cómodos para estudiar y trabajar.</p>
                         </div>
-                        <p>Estado: todos full libres</p>
                     </div>
+
+                    <div class="carousel-slide">
+                        <div class="box-zona-gamer"></div>
+                        <div class="slide-info">
+                            <h3>Zona Gamer</h3>
+                            <p>PC de alto rendimiento para jugar.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="box-sala-grupal"></div>
+                        <div class="slide-info">
+                            <h3>Sala Grupal</h3>
+                            <p>Espacio privado para equipos.</p>
+                        </div>
+                    </div>
+
                 </div>
+
+                <button class="carousel-btn next-btn">&#10095;</button>
             </section>
         </main>
+
+
         <footer class="footer">
-            Maqueta v1: Ethan Pérez - Valeria Meza - Vicente Méndez
+            Maqueta v2: Ethan Pérez - Valeria Meza - Vicente Méndez
         </footer>
 
     </body>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        if (window.matchMedia('(max-width: 1023px)').matches) {
+            const track = document.querySelector('.carousel-track');
+            const prev = document.querySelector('.prev-btn');
+            const next = document.querySelector('.next-btn');
+            const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+            const total = slides.length;
+
+            const firstClone = slides[0].cloneNode(true);
+            const lastClone = slides[total - 1].cloneNode(true);
+            firstClone.classList.add('clone');
+            lastClone.classList.add('clone');
+            track.prepend(lastClone);
+            track.appendChild(firstClone);
+
+            const allSlides = Array.from(document.querySelectorAll('.carousel-slide'));
+            let index = 1;
+
+            function slideWidth() {
+                return allSlides[0].offsetWidth;
+            }
+
+            function update(smooth) {
+                track.style.transition = smooth ? 'transform 0.4s ease' : 'none';
+                track.style.transform = `translateX(-${index * slideWidth()}px)`;
+            }
+
+            next.addEventListener('click', () => {
+                index++;
+                update(true);
+                if (index === allSlides.length - 1) {
+                    setTimeout(() => {
+                        index = 1;
+                        update(false);
+                    }, 400);
+                }
+            });
+
+            prev.addEventListener('click', () => {
+                index--;
+                update(true);
+                if (index === 0) {
+                    setTimeout(() => {
+                        index = allSlides.length - 2;
+                        update(false);
+                    }, 400);
+                }
+            });
+
+            window.addEventListener('resize', () => update(false));
+            update(false);
+        }
+    </script>
 </html>
