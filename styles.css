@@ -216,3 +216,58 @@ h1 {
 .resumen {
     justify-content: space-between;
 }
+
+#Bloque-Loging{
+    text-align: center;
+
+}
+
+#Bloque-Loging p{
+    font-family: 'Times New Roman', Times, serif;
+    color: gray;
+    margin-bottom: 30px;
+    margin-top: 0;
+
+}
+
+#Bloque-Loging h1{
+    margin-bottom: 0px;
+}
+
+.credencial{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: grid;
+}
+
+#email{
+    border:1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#password{
+    border:1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.credenciales-ingreso{
+    margin: 10px 0;
+}
+
+#ingresar{
+    margin: 20px;
+    padding: 10px 18px;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+#ingresar:hover{
+    background-color: #ccc;
+
+}
+
+
+

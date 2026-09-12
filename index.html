@@ -11,9 +11,6 @@
         <header>
             <nav>
                 <div class="logo">Cibercafé Nova</div>
-                <ul class="nav-links" id="navLinks">
-                    <li><a class="button-login" href="login.html">Iniciar Sesión</a></li>
-                </ul>
             </nav>
         </header>
         <main>
@@ -21,6 +18,24 @@
             <!-- Parte de Valeria NO TOCAR-->
 
             <div id="Panel-Login-Sección">
+                <div id="Bloque-Loging">
+                    <h1>Iniciar Sesión</h1>
+                    <p>Introduce tus credenciales para ingresar al panel</p>
+                    <form action="Iniciar-Sesión">
+                        <div class="credenciales-ingreso"><label class="credencial" for="email">Correo</label>
+                        <input type="email" id="email" 
+                        placeholder="Hola@gmail.com" required></div>
+                        <div class="credenciales-ingreso"><label class="credencial" for="password">Contraseña</label>
+                        <input type="password" id="password" required
+                        placeholder="******"></div>
+                        <div class="credenciales-ingreso" ><input type="checkbox" id="remember">
+                        <label for="remember">Recordar</label></div>
+                        <div><a href="#">Olvidaste tu contraseña?</a></div>
+                        <div><input type="button" name="ingresar" id="ingresar" value="Iniciar Sesión"></div>
+                        
+                    
+                    </form>
+                </div>
 
 
             </div>
@@ -184,7 +199,7 @@
                 <p>[Fuera de servicio]</p>
 
                 <h3>Próxima reserva</h3>
-                <p><strong>Fecha:</strong> 14/09/2026</p>
+                <p><strong>Fecha:</strong> 14/10/2026</p>
                 <p><strong>Hora:</strong> 10:00 - 12:00</p>
                 <p><strong>Cliente:</strong> Marcos Ríos</p>
 
