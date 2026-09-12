@@ -12,128 +12,191 @@
             <nav>
                 <div class="logo">Cibercafé Nova</div>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Disponibilidad</a></li>
-                    <li><a class="button-login" href="login.html">Ingresar</a></li>
+                    <li><a class="button-login" href="login.html">Iniciar Sesión</a></li>
                 </ul>
-                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </nav>
         </header>
-
-       
         <main>
-            <div class="first-box">
-                <h1>TU ESPACIO DE TRABAJO, ESTUDIO Y ALTO RENDIMIENTO</h1>
-                <p class="caption-reservar">Reserva tu puesto</p>
-                <div >
-                    <a class="button-reservar" href="#">Reservar ahora</a>
+
+            <!-- Parte de Valeria NO TOCAR-->
+
+            <div id="Panel-Login-Sección">
+
+
+            </div>
+
+            <!-- Fin PArte Valeria, se puede poner código desde aqui hasta antes de la parte del Ethan-->
+
+
+
+<!-- Esta es la parte del Ethan NO TOCAR -->
+
+            <div id="Panel-Operativo-Sección">  
+    <div class="tope">
+        <h2>Panel operativo</h2>
+    </div>
+    <section class="resumen">
+        <div class="stat">
+            <div class="valor">4/15</div>
+            <div class="nivel">Computadores disponibles</div>
+        </div>
+        <div class="stat">
+            <div class="valor">6</div>
+            <div class="nivel">Secciones activas</div>
+        </div>
+        <div class="stat">
+            <div class="valor">15</div>
+            <div class="nivel">Clientes registrados</div>
+        </div>
+        <div class="stat">
+            <div class="valor">3</div>
+            <div class="nivel">Incidencias detectadas</div>
+        </div>
+    </section>
+
+    <div class="estado">
+        <div id="reglas">
+            <span><span class="reglas"></span>Disponible</span>
+            <span><span class="reglas"></span>En uso</span>
+            <span><span class="reglas"></span>Reservado</span>
+            <span><span class="reglas"></span>Fuera de servicio</span>
+        </div>
+        <select>
+            <option>Todas las salas</option>
+            <option>Zona general</option>
+            <option>Zona gamer</option>
+            <option>Sala de grupos</option>
+        </select>
+    </div>
+
+    <section class="sala">
+        <h2>Zona general</h2>
+        <p class="sala-desc">5 puestos. Uso mixto de trabajo e internet</p>
+        <div class="cuadricula">
+            <div class="pc ok"><div class="num">G01</div><div class="estado-pc">Libre</div></div>
+            <div class="pc falla"><div class="num">G02</div><div class="estado-pc">Falla</div></div>
+            <div class="pc ocupado"><div class="num">G03</div><div class="estado-pc">En uso</div></div>
+            <div class="pc ok"><div class="num">G04</div><div class="estado-pc">Libre</div></div>
+            <div class="pc reservado"><div class="num">G05</div><div class="estado-pc">Reservado</div></div>
+        </div>
+    </section>
+
+    <section class="sala">
+        <h2>Zona gamer</h2>
+        <p class="sala-desc">5 puestos. Uso para juegos y rendimiento</p>
+        <div class="cuadricula">
+            <div class="pc ocupado"><div class="num">P01</div><div class="estado-pc">En uso</div></div>
+            <div class="pc ok"><div class="num">P02</div><div class="estado-pc">Libre</div></div>
+            <div class="pc ocupado"><div class="num">P03</div><div class="estado-pc">En uso</div></div>
+            <div class="pc ocupado"><div class="num">P04</div><div class="estado-pc">En uso</div></div>
+            <div class="pc reservado"><div class="num">P05</div><div class="estado-pc">Reservado</div></div>
+        </div>
+    </section>
+
+    <section class="sala">
+        <h2>Zona grupos</h2>
+        <p class="sala-desc">5 puestos. Para equipo y trabajo colaborativo</p>
+        <div class="cuadricula">
+            <div class="pc ocupado"><div class="num">S01</div><div class="estado-pc">En uso</div></div>
+            <div class="pc ok"><div class="num">S02</div><div class="estado-pc">Libre</div></div>
+            <div class="pc ocupado"><div class="num">S03</div><div class="estado-pc">En uso</div></div>
+            <div class="pc falla"><div class="num">S04</div><div class="estado-pc">Falla</div></div>
+            <div class="pc falla"><div class="num">S05</div><div class="estado-pc">Falla</div></div>
+        </div>
+    </section>
+            </div>
+
+<!-- Fin parte del Ethan, Poner códgio desde acá en adelante-->
+
+<!-- Esta es mi parte, NO LE TOQUEN NADAAA -->
+
+            <div id="vista-salas" class="vista">
+                <h2>Salas y Puestos</h2>
+
+                <div id="filtros-salas" class="filtros">
+                    <label for="filtro-sala">Filtrar por sala:
+                        <select id="filtro-sala">
+                            <option>Todas</option>
+                            <option>Zona General</option>
+                            <option>Zona Gamer</option>
+                            <option>Sala de Equipos</option>
+                        </select>
+                    </label>
+                    <label for="filtro-estado">Filtrar por estado:
+                        <select id="filtro-estado">
+                            <option>Todos</option>
+                            <option>[Disponible]</option>
+                            <option>[Reservado]</option>
+                            <option>[En uso]</option>
+                            <option>[Fuera de servicio]</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="lista-salas">
+                <section id="sala-zona-general" class="sala-bloque">
+                    <h3>Zona General</h3>
+                    <ul class="lista-puestos">
+                        <li>PC-01 [Disponible]</li>
+                        <li>PC-02 [En uso]</li>
+                        <li>PC-03 [Reservado]</li>
+                        <li>PC-04 [Disponible]</li>
+                        <li>PC-05 [Fuera de servicio]</li>
+                    </ul>
+                </section>
+
+                <section id="sala-zona-gamer" class="sala-bloque">
+                    <h3>Zona Gamer</h3>
+                    <ul class="lista-puestos">
+                        <li>PC-06 [Disponible]</li>
+                        <li>PC-07 [En uso]</li>
+                        <li>PC-08 [En uso]</li>
+                        <li>PC-09 [Reservado]</li>
+                        <li>PC-10 [Disponible]</li>
+                    </ul>
+                </section>
+
+                <section id="sala-equipos" class="sala-bloque">
+                    <h3>Sala de Equipos</h3>
+                    <ul class="lista-puestos">
+                        <li>PC-11 [Disponible]</li>
+                        <li>PC-12 [Fuera de servicio]</li>
+                        <li>PC-13 [En uso]</li>
+                        <li>PC-14 [Reservado]</li>
+                        <li>PC-15 [Disponible]</li>
+                    </ul>
+                </section>
                 </div>
             </div>
 
-            <section class="carousel">
-                <button class="carousel-btn prev-btn">&#10094;</button>
 
-                <div class="carousel-track">
+            <div id="vista-detalle" class="vista">
+                <h2>Detalle de Computador</h2>
 
-                    <div class="carousel-slide">
-                        <div class="box-sala-general"></div>
-                        <div class="slide-info">
-                            <h3>Sala General</h3>
-                            <p>Puestos cómodos para estudiar y trabajar.</p>
-                        </div>
-                    </div>
-
-                    <div class="carousel-slide">
-                        <div class="box-zona-gamer"></div>
-                        <div class="slide-info">
-                            <h3>Zona Gamer</h3>
-                            <p>PC de alto rendimiento para jugar.</p>
-                        </div>
-                    </div>
-
-                    <div class="carousel-slide">
-                        <div class="box-sala-grupal"></div>
-                        <div class="slide-info">
-                            <h3>Sala Grupal</h3>
-                            <p>Espacio privado para equipos.</p>
-                        </div>
-                    </div>
-
+                <div class="ficha-equipo">
+                    <h3>Datos del equipo</h3>
+                    <p><strong>ID:</strong> PC-05</p>
+                    <p><strong>Sala:</strong> Zona General</p>
+                    <p><strong>Hardware:</strong> Intel Core i5, 16 GB RAM, SSD 512 GB, tarjeta de video integrada, monitor 24" y teclado/mouse estándar.</p>
                 </div>
 
-                <button class="carousel-btn next-btn">&#10095;</button>
-            </section>
+                <h3>Estado actual</h3>
+                <p>[Fuera de servicio]</p>
+
+                <h3>Próxima reserva</h3>
+                <p><strong>Fecha:</strong> 14/09/2026</p>
+                <p><strong>Hora:</strong> 10:00 - 12:00</p>
+                <p><strong>Cliente:</strong> Marcos Ríos</p>
+
+                <h3>Historial de incidencias</h3>
+                <ul class="historial-incidencias">
+                    <li>02/09/2026 - Pantalla no encendía; se reemplazó el cable de video.</li>
+                    <li>18/08/2026 - Teclado con teclas sin respuesta; se cambió el teclado.</li>
+                </ul>
+
+            </div>
+
+            <!-- Acá termina mi parte, pongan lo que quieran despues de esto nmas -->
+
         </main>
-
-
-        <footer class="footer">
-            Maqueta v2: Ethan Pérez - Valeria Meza - Vicente Méndez
-        </footer>
-
-    </body>
-
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
-
-        if (window.matchMedia('(max-width: 1023px)').matches) {
-            const track = document.querySelector('.carousel-track');
-            const prev = document.querySelector('.prev-btn');
-            const next = document.querySelector('.next-btn');
-            const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-            const total = slides.length;
-
-            const firstClone = slides[0].cloneNode(true);
-            const lastClone = slides[total - 1].cloneNode(true);
-            firstClone.classList.add('clone');
-            lastClone.classList.add('clone');
-            track.prepend(lastClone);
-            track.appendChild(firstClone);
-
-            const allSlides = Array.from(document.querySelectorAll('.carousel-slide'));
-            let index = 1;
-
-            function slideWidth() {
-                return allSlides[0].offsetWidth;
-            }
-
-            function update(smooth) {
-                track.style.transition = smooth ? 'transform 0.4s ease' : 'none';
-                track.style.transform = `translateX(-${index * slideWidth()}px)`;
-            }
-
-            next.addEventListener('click', () => {
-                index++;
-                update(true);
-                if (index === allSlides.length - 1) {
-                    setTimeout(() => {
-                        index = 1;
-                        update(false);
-                    }, 400);
-                }
-            });
-
-            prev.addEventListener('click', () => {
-                index--;
-                update(true);
-                if (index === 0) {
-                    setTimeout(() => {
-                        index = allSlides.length - 2;
-                        update(false);
-                    }, 400);
-                }
-            });
-
-            window.addEventListener('resize', () => update(false));
-            update(false);
-        }
-    </script>
 </html>
