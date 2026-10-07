@@ -26,13 +26,13 @@ body{
     cursor: pointer;
 }
 .btn.primary{
-    background: var(--panel);
+    background: var(--brand);
     border-color: var(--brand);
     color: #fff;
 }
 input{
     font: inherit;
-    padding: o.5rem 0.7rem;
+    padding: 0.5rem 0.7rem;
     border: 1px solid var(--line);
     border-radius: 8px;
 }
@@ -42,7 +42,7 @@ input{
     place-items: center;
     padding: 1rem;
 }
-.login-card{
+.form-login{
     width: min(400px, 100%);
     background: var(--panel);
     padding: 2rem;
