@@ -24,6 +24,44 @@
         </form>
     </section>
 
+    <!-- ... -->
+
+    <div id="app">
+        <header class="topbar">
+            <div class="logo">Cibercafé Nova</div>
+            <div class="sesion">
+                <span id="usuario">admin@cibercafenova.cl</span>
+                <button type="button" class="btn">Cerrar secion</button>
+            </div>
+        </header>
+
+        <main>
+            <h1>Panel operativo</h1>
+
+            <seccion class="resumen" aria-label="Resumen">
+                <div class="stat" data-e="disponible">
+                    <div class="valor">4/30</div>
+                    <div class="nivel">Disponibles</div>
+                </div>
+
+                <div class="stat" data-e="uso">
+                    <div class="valor">12</div>
+                    <div class="nivel">En uso</div>
+                </div>
+
+                <div class="stat" data-e="reservado">
+                    <div class="valor">8</div>
+                    <div class="nivel">Reservados</div>
+                </div>
+
+                <div class="stat" data-e="fuera">
+                    <div class="valor">6</div>
+                    <div class="nivel">Fuera de servicio</div>
+                </div>
+            </seccion>
+        </main>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

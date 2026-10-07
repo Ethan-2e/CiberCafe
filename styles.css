@@ -5,6 +5,10 @@
     --muted: #5b6678;
     --line: #d9dfe8;
     --brand: #2a4bd7;
+    --disponible: #12805c;
+    --uso: #2457c5;
+    --reservado: #8f5a00;
+    --fuera: #b42b2b;
 }
 *{
   box-sizing: border-box;
@@ -51,3 +55,31 @@ input{
     display: grid;
     gap: .6rem;
 }
+.topbar{
+    background: var(--ink);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+}
+.logo{
+    font-weight: 800;
+    font-size: 1.15rem;
+}
+main{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+.resumen{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+
+[data-e="disponibles"]  {--c: var(--disponible);}
+[data-e="uso"]          {--c: var(--uso);}
+[data-e="reservado"]    {--c: var(--reservado);}
+[data-e="fuera"]        {--c: var(--fuera);}
