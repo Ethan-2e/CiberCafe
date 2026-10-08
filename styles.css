@@ -79,7 +79,7 @@ main{
     margin: 1rem 0;
 }
 
-[data-e="disponibles"]  {--c: var(--disponible);}
+[data-e="disponible"]  {--c: var(--disponible);}
 [data-e="uso"]          {--c: var(--uso);}
 [data-e="reservado"]    {--c: var(--reservado);}
 [data-e="fuera"]        {--c: var(--fuera);}
