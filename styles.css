@@ -5,10 +5,10 @@
     --muted: #5b6678;
     --line: #d9dfe8;
     --brand: #2a4bd7;
-    --disponible: #12805c;
-    --uso: #2457c5;
-    --reservado: #8f5a00;
-    --fuera: #b42b2b;
+    --disponible: #12805c;      --disponible-bg: #ddf3ea;
+    --uso: #2457c5;             --uso-bg: #e0e9fb;
+    --reservado: #8f5a00;       --reservado-bg: #fbefd2;
+    --fuera: #b42b2b;           --fuera-bg: #fbe0e0;
 }
 *{
   box-sizing: border-box;
@@ -79,10 +79,10 @@ main{
     margin: 1rem 0;
 }
 
-[data-e="disponible"]  {--c: var(--disponible);}
-[data-e="uso"]          {--c: var(--uso);}
-[data-e="reservado"]    {--c: var(--reservado);}
-[data-e="fuera"]        {--c: var(--fuera);}
+[data-e="disponible"]   {--c: var(--disponible);    --b:var(--disponible-bg);}
+[data-e="uso"]          {--c: var(--uso);           --b:var(--uso-bg);}
+[data-e="reservado"]    {--c: var(--reservado);     --b:var(--reservado-bg);}
+[data-e="fuera"]        {--c: var(--fuera);         --b:var(--fuera-bg);}
 
 .sesion{
     display: flex;
