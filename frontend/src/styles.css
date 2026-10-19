@@ -149,3 +149,38 @@ main{
     font-weight: 700;
     color: var(--c);
 }
+.barra{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.chips{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    flex: 1;
+}
+.chip{
+    font-size: 0.85rem;
+    padding: 0.35rem 0.7rem;
+}
+.btn[aria-pressed="true"]{
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+}
+select{
+    font: inherit;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel);
+    color: var(--ink);
+}
+.vacio{
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+}
