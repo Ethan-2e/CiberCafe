@@ -1,0 +1,39 @@
+{
+  "salas": [
+    { "id": "general", "nombre": "Zona general", "desc": "Trabajo e internet" },
+    { "id": "gamer", "nombre": "Zona gamer", "desc": "Juegos y alto rendimiento" },
+    { "id": "equipos", "nombre": "Sala de equipos", "desc": "Trabajo colaborativo" }
+  ],
+  "pcs": [
+    { "id": "G01", "sala": "general", "estado": "disponible" },
+    { "id": "G02", "sala": "general", "estado": "fuera" },
+    { "id": "G03", "sala": "general", "estado": "uso" },
+    { "id": "G04", "sala": "general", "estado": "disponible" },
+    { "id": "G05", "sala": "general", "estado": "reservado" },
+    { "id": "G06", "sala": "general", "estado": "disponible" },
+    { "id": "G07", "sala": "general", "estado": "uso" },
+    { "id": "G08", "sala": "general", "estado": "disponible" },
+    { "id": "G09", "sala": "general", "estado": "uso" },
+    { "id": "G10", "sala": "general", "estado": "reservado" },
+    { "id": "P01", "sala": "gamer", "estado": "uso" },
+    { "id": "P02", "sala": "gamer", "estado": "disponible" },
+    { "id": "P03", "sala": "gamer", "estado": "uso" },
+    { "id": "P04", "sala": "gamer", "estado": "uso" },
+    { "id": "P05", "sala": "gamer", "estado": "reservado" },
+    { "id": "P06", "sala": "gamer", "estado": "disponible" },
+    { "id": "P07", "sala": "gamer", "estado": "uso" },
+    { "id": "P08", "sala": "gamer", "estado": "uso" },
+    { "id": "P09", "sala": "gamer", "estado": "disponible" },
+    { "id": "P10", "sala": "gamer", "estado": "uso" },
+    { "id": "S01", "sala": "equipos", "estado": "uso" },
+    { "id": "S02", "sala": "equipos", "estado": "disponible" },
+    { "id": "S03", "sala": "equipos", "estado": "uso" },
+    { "id": "S04", "sala": "equipos", "estado": "fuera" },
+    { "id": "S05", "sala": "equipos", "estado": "fuera" },
+    { "id": "S06", "sala": "equipos", "estado": "disponible" },
+    { "id": "S07", "sala": "equipos", "estado": "reservado" },
+    { "id": "S08", "sala": "equipos", "estado": "uso" },
+    { "id": "S09", "sala": "equipos", "estado": "disponible" },
+    { "id": "S10", "sala": "equipos", "estado": "disponible" }
+  ]
+}
