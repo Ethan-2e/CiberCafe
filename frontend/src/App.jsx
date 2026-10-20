@@ -19,9 +19,32 @@ export default function App() {
     (salaFiltro === 'todas' || pc.sala === salaFiltro) &&
     pc.id.toLowerCase().includes(busqueda.trim().toLowerCase())
   )
+  const hayFiltro = estado !== 'todos' || busqueda.trim() !== ''
+  const salasMostradas = salas.filter(s=>salaFiltro === 'todas' || s.id === salaFiltro)
+
   const seleccionado = pcs.find(pc => pc.id === seleccionadoId)
   function cambiarEstado(id, nuevoEstado) {
     setPcs(pcs.map(pc=>(pc.id === id ? {...pc, estado: nuevoEstado} :pc)))
+  }
+
+  function agregarPc(salaId) {
+    const sala = salas.find(s => s.id === salaId)
+    const numeros = pcs
+      .filter(pc => pc.sala === salaId)
+      .map(pc => parseInt(pc.id.slice(1)))
+    const siguiente = Math.max(0, ...numeros) + 1
+    const nuevo = {
+      id: sala.pre + String(siguiente).padStart(2, '0'),
+      sala: salaId,
+      estado: 'disponible',
+    }
+    setPcs([...pcs, nuevo])
+  }
+
+  function eliminarPc(id) {
+    if (!window.confirm(`¿Eliminar el equipo ${id}?`)) return
+    setPcs(pcs.filter(pc => pc.id !== id))
+    setSeleccionadoId(null)
   }
 
   return (
@@ -45,10 +68,12 @@ export default function App() {
         />
 
         <div id="salas">
-          {visibles.length === 0 && <p className="vacio">Ningún equipo coincide con los filtros.</p>}
-          {salas.map(sala => {
+          {visibles.length === 0 && hayFiltro && (
+            <p className='vacio'>Ningún equipo coincide con los filtros.</p>
+          )}
+          {salasMostradas.map(sala => {
             const delaSala = visibles.filter(pc => pc.sala === sala.id)
-            if (delaSala.length === 0) return null
+            if (delaSala.length === 0 && hayFiltro) return null
             return (
               <Sala
                 key={sala.id}
@@ -57,10 +82,12 @@ export default function App() {
                 total={pcs.filter(pc => pc.sala === sala.id).length}
                 seleccionado={seleccionadoId}
                 onSeleccionar={setSeleccionadoId}
+                onAgregar={agregarPc}
               />
             )
           })}
         </div>
+
       </main>
       {seleccionado && (
         <Detalle
@@ -68,6 +95,7 @@ export default function App() {
           sala={salas.find(s => s.id === seleccionado.sala)}
           onCambiarEstado={cambiarEstado}
           onCerrar={() => setSeleccionadoId(null)}
+          onEliminar={eliminarPc}
         />
       )}
     </div>

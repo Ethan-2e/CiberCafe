@@ -1,6 +1,6 @@
 import { ETIQUETAS } from "../constantes";
 
-export default function Detalle({ pc, sala, onCambiarEstado, onCerrar }) {
+export default function Detalle({ pc, sala, onCambiarEstado, onCerrar, onEliminar }) {
   return (
     <aside className="detalle" aria-label="detalle del computador">
       <button type="button" className="btn cerrar" onClick={onCerrar} aria-label="Cerrar detalle">x</button>
@@ -22,6 +22,9 @@ export default function Detalle({ pc, sala, onCambiarEstado, onCerrar }) {
           </button>
         ))}
       </div>
+      <button type="button" className="btn peligro" onClick={() => onEliminar(pc.id)}>
+        Eliminar este PC
+      </button>
     </aside>
   )
 }
