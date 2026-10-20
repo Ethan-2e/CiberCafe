@@ -184,3 +184,36 @@ select{
     padding: 2rem;
     color: var(--muted);
 }
+.pc.activo{
+    outline: 3px solid var(--ink);
+    outline-offset: 2px;
+}
+.detalle{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(420px, 100%);
+    background: var(--panel);
+    border-left: 1px solid var(--line);
+    box-shadow: -8px 0 24px rgba(24, 33, 47, 0.12);
+    padding: 1.5rem;
+    overflow: auto;
+}
+.detalle h3{
+    font-size: 0.95rem;
+    margin: 1.12rem 0 0.13rem;
+}
+.cerrar{
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    font-size: 1.3rem;
+    line-height: 1;
+    padding: 0.3rem 0.6rem;
+}
+.estado{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+}

@@ -1,8 +1,8 @@
 {
   "salas": [
-    { "id": "general", "nombre": "Zona general", "desc": "Trabajo e internet" },
-    { "id": "gamer", "nombre": "Zona gamer", "desc": "Juegos y alto rendimiento" },
-    { "id": "equipos", "nombre": "Sala de equipos", "desc": "Trabajo colaborativo" }
+    { "id": "general", "pre": "G","nombre": "Zona general", "desc": "Trabajo e internet", "hw": "Intel Core i5, 16 GB RAM, SSD 512 GB, monitor 24\"" },
+    { "id": "gamer", "pre": "P", "nombre": "Zona gamer", "desc": "Juegos y alto rendimiento", "hw": "amd ryzen 7 5700x, 32 GB RAM, SSD 1 TB, RTX 4060, monitor 27\"" },
+    { "id": "equipos", "pre": "S", "nombre": "Sala de equipos", "desc": "Trabajo colaborativo", "hw": "Intel Core i5, 16 GB RAM, SSD 512 GB, monitor 24\""  }
   ],
   "pcs": [
     { "id": "G01", "sala": "general", "estado": "disponible" },

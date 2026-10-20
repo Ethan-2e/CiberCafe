@@ -1,3 +1,4 @@
+import Detalle from './components/Detalle'
 import { useState } from 'react'
 import { obtenerDatos } from './api'
 import Filtros from './components/Filtros'
@@ -5,7 +6,9 @@ import Resumen from './components/Resumen'
 import Sala from './components/Sala'
 
 export default function App() {
-  const { salas, pcs } = obtenerDatos()
+  const { salas, pcs: pcsBase } = obtenerDatos()
+  const [pcs, setPcs] = useState(pcsBase)
+  const[seleccionadoId, setSeleccionadoId] = useState(null)
 
   const [estado, setEstado] = useState('todos')
   const [salaFiltro, setSalaFiltro] = useState('todas')
@@ -16,6 +19,10 @@ export default function App() {
     (salaFiltro === 'todas' || pc.sala === salaFiltro) &&
     pc.id.toLowerCase().includes(busqueda.trim().toLowerCase())
   )
+  const seleccionado = pcs.find(pc => pc.id === seleccionadoId)
+  function cambiarEstado(id, nuevoEstado) {
+    setPcs(pcs.map(pc=>(pc.id === id ? {...pc, estado: nuevoEstado} :pc)))
+  }
 
   return (
     <div id="app">
@@ -48,11 +55,21 @@ export default function App() {
                 sala={sala}
                 pcs={delaSala}
                 total={pcs.filter(pc => pc.sala === sala.id).length}
+                seleccionado={seleccionadoId}
+                onSeleccionar={setSeleccionadoId}
               />
             )
           })}
         </div>
       </main>
+      {seleccionado && (
+        <Detalle
+          pc={seleccionado}
+          sala={salas.find(s => s.id === seleccionado.sala)}
+          onCambiarEstado={cambiarEstado}
+          onCerrar={() => setSeleccionadoId(null)}
+        />
+      )}
     </div>
   )
 }

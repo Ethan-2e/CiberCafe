@@ -1,6 +1,6 @@
 import Puesto from './Puesto'
 
-export default function Sala({ sala, pcs, total }){
+export default function Sala({ sala, pcs, total, seleccionado, onSeleccionar }){
   return(
     <section className="sala">
       <header>
@@ -8,7 +8,14 @@ export default function Sala({ sala, pcs, total }){
         <span className="muted">{sala.desc}. Mostrando {pcs.length} de {total} puestos</span>
       </header>
       <div className="cuadricula">
-        {pcs.map(pc => <Puesto key={pc.id} pc={pc} />)}
+        {pcs.map(pc => (
+          <Puesto
+            key={pc.id}
+            pc={pc}
+            activo={pc.id === seleccionado}
+            onSeleccionar={onSeleccionar}
+          />
+        ))}
       </div>
     </section>
   )
