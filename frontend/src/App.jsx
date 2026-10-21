@@ -4,6 +4,7 @@ import { obtenerDatos } from './api'
 import Filtros from './components/Filtros'
 import Resumen from './components/Resumen'
 import Sala from './components/Sala'
+import Login from './components/Login'
 
 export default function App() {
   const { salas, pcs: pcsBase } = obtenerDatos()
@@ -13,6 +14,8 @@ export default function App() {
   const [estado, setEstado] = useState('todos')
   const [salaFiltro, setSalaFiltro] = useState('todas')
   const [busqueda, setBusqueda] = useState('')
+
+  const [usuario, setUsuario] = useState(null)
 
   const visibles = pcs.filter(pc =>
     (estado === 'todos' || pc.estado === estado) &&
@@ -47,13 +50,20 @@ export default function App() {
     setSeleccionadoId(null)
   }
 
+  if(!usuario) return <Login onEntrar={setUsuario} />
+
   return (
     <div id="app">
       <header className="topbar">
         <div className="logo">Cibercafé Nova</div>
         <div className="sesion">
-          <span>admin@cibercafenova.cl</span>
-          <button type="button" className="btn">Cerrar sesión</button>
+          <span>{usuario}</span>
+          <button
+            type="button" className="btn"
+            onClick={() => { setUsuario(null), setSeleccionadoId(null) }}
+          >
+            Cerrar sesión
+          </button>
         </div>
       </header>
 
