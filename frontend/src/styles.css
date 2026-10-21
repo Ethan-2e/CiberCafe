@@ -1,14 +1,19 @@
 :root{
-    --bg: #edf0f4;
-    --panel: #ffffff;
-    --ink: #18212f;
-    --muted: #5b6678;
-    --line: #d9dfe8;
-    --brand: #2a4bd7;
-    --disponible: #12805c;      --disponible-bg: #ddf3ea;
-    --uso: #2457c5;             --uso-bg: #e0e9fb;
-    --reservado: #8f5a00;       --reservado-bg: #fbefd2;
-    --fuera: #b42b2b;           --fuera-bg: #fbe0e0;
+    --bg: #0b1020;
+    --bar: #070b17;
+    --panel: #121a30;
+    --ink: #e8ecf8;
+    --muted: #8d9ac0;
+    --line: #26335a;
+    --brand: #ff4fd8;
+    --disponible: #2ee6a6;
+    --uso: #5aa2ff;
+    --reservado: #ffc447;
+    --fuera: #ff6b6b;
+    --disponible-bg: rgba(46, 230, 166, 0.12);
+    --uso-bg: rgba(90, 162, 255, 0.14);
+    --reservado-bg: rgba(255, 196, 71, 0.12);
+    --fuera-bg: rgba(255, 107, 107, 0.12);
 }
 *{
   box-sizing: border-box;
@@ -18,6 +23,8 @@ body{
     font: 400 16px/1.5 system-ui, sans-serif;
     background: var(--bg);
     color: var(--ink);
+    background-image: radial-gradient(rgba(140, 160, 255, 0.12) 1px, transparent 1px);
+    background-size: 22px 22px;
 }
 .btn{
     font: inherit;
@@ -32,36 +39,57 @@ body{
 .btn.primary{
     background: var(--brand);
     border-color: var(--brand);
-    color: #fff;
+    color: var(--bar);
 }
 input{
     font: inherit;
     padding: 0.5rem 0.7rem;
     border: 1px solid var(--line);
     border-radius: 8px;
+    background: var(--bg);
+    color: var(--ink);
 }
-.login{
+#login {
     min-height: 100vh;
     display: grid;
     place-items: center;
     padding: 1rem;
+    background:
+        linear-gradient(rgba(11, 16, 32, 0.78), rgba(11, 16, 32, 0.92)),
+        url('/fondo-login.jpg') center / cover no-repeat;
 }
-.form-login{
+#form-login {
     width: min(400px, 100%);
     background: var(--panel);
     padding: 2rem;
     border-radius: 14px;
     border: 1px solid var(--line);
     display: grid;
-    gap: .6rem;
+    gap: 0.6rem;
+    box-shadow: 0 0 40px rgba(255, 79, 216, 0.15);
+}
+#form-login label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+}
+#form-login .btn {
+    margin-top: 0.8rem;
+    padding: 0.7rem;
+}
+#form-login a {
+    color: var(--brand);
+    font-size: 0.9rem;
+    text-align: center;
 }
 .topbar{
-    background: var(--ink);
+    background: var(--bar);
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.8rem 1.5rem;
+    border-bottom: 1pz solid var(--brand);
 }
 .logo{
     font-weight: 800;
@@ -167,9 +195,9 @@ main{
     padding: 0.35rem 0.7rem;
 }
 .btn[aria-pressed="true"]{
-    background: var(--ink);
-    border-color: var(--ink);
-    color: #fff;
+    background: var(--brand);
+    border-color: var(--brand);
+    color: var(--bar);
 }
 select{
     font: inherit;
@@ -226,4 +254,35 @@ select{
 }
 .detalle .peligro {
     margin-top: 1.5rem;
+}
+
+h1, h2, .logo {
+    font-family: 'Chakra Petch', system-ui, sans-serif;
+}
+.pc .num, .stat .valor {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+.logo {
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 12px var(--brand);
+}
+.logo::before {
+    content: ">_ ";
+    color: var(--brand);
+}
+.stat .valor {
+    color: var(--c, var(--ink));
+}
+.pc .est::before {
+    content: "";
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--c);
+    box-shadow: 0 0 8px var(--c);
+    margin-right: 0.4rem;
+}
+.pc:hover {
+    box-shadow: 0 0 14px var(--c);
 }
