@@ -105,3 +105,49 @@ body {
     font-size: 28px;
     font-weight: bold;
 }
+
+
+.salas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sala-card {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.sala-title {
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.puestos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.puesto {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+.puesto-disponible { background-color: #28a745; } 
+.puesto-en_uso { background-color: #dc3545; } 
+.puesto-falla { background-color: #6c757d; } 
