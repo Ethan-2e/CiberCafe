@@ -1,0 +1,11 @@
+{
+  "computadores": [
+    { "id": "G01", "sala": "General", "estado": "disponible" },
+    { "id": "G02", "sala": "General", "estado": "en_uso" },
+    { "id": "P01", "sala": "Gamer", "estado": "falla" }
+  ],
+  "sesiones": [
+    { "id": 1, "puesto": "G02", "cliente": "Matías R.", "inicio": "14:10" }
+  ],
+  "incidencias": []
+}
