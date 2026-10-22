@@ -8,3 +8,5 @@ async function cargarSalas() {
 }
 
 document.addEventListener('DOMContentLoaded', cargarSalas);
+
+//Dejemosla pa la tercer entrega mejor, no lo pide la rúbrica nueva

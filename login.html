@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cibercafé Nova - Iniciar Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-body">
+    
+    <div class="login-card">
+        <h2>Iniciar Sesión</h2>
+        <p style="text-align: center; font-size: 12px; color: #666666; margin-bottom: 20px;">
+            Acceso administrativo. Usa un correo <strong>@gmail.com</strong>
+        </p>
+        
+        <form id="form-login" novalidate>
+            <div class="form-group">
+                <label class="form-label">Correo electrónico</label>
+                <input type="email" id="input-email" class="form-control" placeholder="ejemplo@gmail.com" required>
+                <div id="error-email" class="error-text">El correo es inválido o no termina en @gmail.com</div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Contraseña</label>
+                <input type="password" id="input-password" class="form-control" placeholder="Ingresa cualquier contraseña" required>
+                <div id="error-password" class="error-text">Debes ingresar una contraseña.</div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px; padding: 12px;">Ingresar al sistema</button>
+        </form>
+    </div>
+
+    <script type="module" src="login.js"></script>
+</body>
+</html>

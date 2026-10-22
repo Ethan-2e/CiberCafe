@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cibercafé Nova - Detalle de Equipo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    
+    <div class="main">
+        <header class="topbar">
+            <div class="topbar-title">Detalle del Equipo</div>
+        </header>
+        <div class="content">
+            
+            <div class="panel">
+                <h2 id="titulo-equipo" style="margin-top: 0;">Cargando equipo...</h2>
+                <p><strong>Estado actual:</strong> <span id="estado-actual"></span></p>
+                <p><strong>Último motivo registrado:</strong> <span id="motivo-actual">Ninguno</span></p>
+                
+                <hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;">
+                
+                <h3>Cambiar estado</h3>
+                <div id="mensaje-exito" class="success-msg">El estado se actualizó correctamente.</div>
+                
+                <form id="form-detalle" novalidate>
+                    <div class="form-group">
+                        <label class="form-label">Nuevo estado</label>
+                        <select id="select-estado" class="form-control">
+                            <option value="disponible">Disponible</option>
+                            <option value="en_uso">En Uso</option>
+                            <option value="falla">Falla</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Motivo (Obligatorio)</label>
+                        <input type="text" id="input-motivo" class="form-control" placeholder="Ej: Mantenimiento, Inicio de sesión, etc.">
+                        <div id="error-motivo" class="error-text">Debes ingresar un motivo para justificar el cambio de estado.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Confirmar cambio</button>
+                    <button type="button" class="btn" onclick="window.location.href='salas.html'" style="background-color:#6c757d; color:white; margin-left:10px;">Volver</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="layout.js"></script>
+    <script type="module" src="detalle.js"></script>
+</body>
+</html>

@@ -190,3 +190,115 @@ th {
 .btn-danger:hover {
     background-color: #c82333;
 }
+
+.panel {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #555555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #004494;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        height: auto;
+    }
+    #sidebar-container {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #dddddd;
+    }
+    .sidebar-section {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    .sidebar-label { width: 100%; }
+    .nav-item {
+        padding: 8px 12px;
+        border-left: none;
+        border-bottom: 4px solid transparent;
+    }
+    .nav-item.active {
+        border-left: none;
+        border-bottom: 4px solid #0056b3;
+    }
+    .stats-row { flex-direction: column; }
+    .stat-tile { width: 100%; box-sizing: border-box; }
+}
+
+.error-text {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+    font-weight: bold;
+}
+.input-error {
+    border-color: #dc3545;
+    background-color: #fff8f8;
+}
+.success-msg {
+    color: #28a745;
+    background-color: #e3f4eb;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+.login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.login-card {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.login-card h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #333333;
+}

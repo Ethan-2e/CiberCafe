@@ -23,7 +23,7 @@ async function cargarSalas() {
             `;
             
             puestos.forEach(p => {
-                html += `<div class="puesto puesto-${p.estado}" title="Estado: ${p.estado}">${p.id}</div>`;
+                html += `<div class="puesto puesto-${p.estado}" title="Estado: ${p.estado}" onclick="window.location.href='detalle.html?id=${p.id}'">${p.id}</div>`;
             });
             
             html += `</div></div>`;
