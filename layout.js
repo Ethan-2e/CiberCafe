@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const path = window.location.pathname;
   const sidebarHTML = `
     <aside class="sidebar">
       <div class="sidebar-brand">
@@ -7,8 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <nav class="sidebar-section">
         <div class="sidebar-label">Principal</div>
-        <a href="index.html" class="nav-item ${window.location.pathname.includes('index') || window.location.pathname === '/' ? 'active' : ''}">Panel operativo</a>
-        <a href="salas.html" class="nav-item ${window.location.pathname.includes('salas') ? 'active' : ''}">Salas y puestos</a>
+        <a href="index.html" class="nav-item ${path.includes('index') || path === '/' ? 'active' : ''}">Panel operativo</a>
+        <a href="salas.html" class="nav-item ${path.includes('salas') ? 'active' : ''}">Salas y puestos</a>
+        <a href="sesiones.html" class="nav-item ${path.includes('sesiones') ? 'active' : ''}">Sesiones activas</a>
       </nav>
     </aside>
   `;
