@@ -12,13 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
       <nav class="sidebar-section">
         <div class="sidebar-label">Principal</div>
         <a href="index.html" class="nav-item ${path.includes('index') || path === '/' ? 'active' : ''}">Panel operativo</a>
-        <a href="salas.html" class="nav-item ${path.includes('salas') ? 'active' : ''}">Salas y puestos</a>
         <a href="nueva-sesion.html" class="nav-item ${path.includes('nueva-sesion') ? 'active' : ''}">Nueva sesión</a>
         <a href="sesiones.html" class="nav-item ${path.includes('sesiones') ? 'active' : ''}">Sesiones activas</a>
         <a href="incidencias.html" class="nav-item ${path.includes('incidencias') ? 'active' : ''}">Incidencias</a>
       </nav>
       
-      <!-- Botón de cerrar sesión al final -->
       <div style="margin-top: auto; padding: 20px;">
         <button id="btn-logout" class="btn" style="width: 100%; background-color: #f8f9fa; border: 1px solid #ddd; color: #dc3545;">Cerrar sesión</button>
       </div>

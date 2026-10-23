@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cibercafé Nova - Dashboard</title>
+    <title>Cibercafé Nova - Panel Operativo</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="sidebar-container"></div>
+    
     <div class="main">
         <header class="topbar">
             <div class="topbar-title">Panel operativo</div>
         </header>
-        <div class="content" id="dashboard-content">
-            <h2>Cargando estado...</h2>
+        <div class="content">
+            <div id="dashboard-stats" style="margin-bottom: 20px;">
+                <h2>Cargando estado...</h2>
+            </div>
+            <div id="salas-content"></div>
         </div>
     </div>
+
     <script src="layout.js"></script>
     <script type="module" src="index.js"></script>
 </body>
