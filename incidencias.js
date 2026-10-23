@@ -34,7 +34,8 @@ async function cargarDatosIniciales() {
                     <td>${inc.descripcion}</td>
                     <td>${inc.fecha}</td>
                     <td>
-                        <button class="btn btn-danger" onclick="borrarIncidencia('${inc.id}')">Eliminar</button>
+                        <!-- Se añade inc.puesto como segundo parámetro -->
+                        <button class="btn btn-danger" onclick="borrarIncidencia('${inc.id}', '${inc.puesto}')">Eliminar</button>
                     </td>
                 </tr>
             `;
@@ -46,21 +47,26 @@ async function cargarDatosIniciales() {
         document.getElementById('lista-incidencias').innerHTML = '<p style="color:red">Error cargando datos.</p>';
     }
 }
-window.borrarIncidencia = async (idIncidencia) => {
-    const confirmar = confirm("¿Estás seguro de borrar este registro del historial?");
+window.borrarIncidencia = async (idIncidencia, idPuesto) => {
+    const confirmar = confirm(`¿Estás seguro de borrar este registro y volver a habilitar el puesto ${idPuesto}?`);
     if (!confirmar) return;
     try {
         await fetch(`${API_URL}/incidencias/${idIncidencia}`, {
             method: 'DELETE'
         });
-        cargarDatosIniciales();
+        await fetch(`${API_URL}/computadores/${idPuesto}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ estado: 'disponible', motivo: '' })
+        });
+        cargarDatosIniciales();      
     } catch (error) {
         alert("Hubo un error al eliminar el registro.");
         console.error(error);
     }
 };
 document.getElementById('form-incidencia').addEventListener('submit', async (e) => {
-    e.preventDefault();    
+    e.preventDefault();
     const puesto = document.getElementById('select-puesto').value;
     const descripcion = document.getElementById('input-descripcion').value;
     const nuevaIncidencia = {
