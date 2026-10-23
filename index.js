@@ -5,6 +5,7 @@ async function cargarPanel() {
         const computadores = await respuesta.json();
         const disponibles = computadores.filter(c => c.estado === 'disponible').length;
         const enUso = computadores.filter(c => c.estado === 'en_uso').length;
+        const enFalla = computadores.filter(c => c.estado === 'falla').length;
         document.getElementById('dashboard-stats').innerHTML = `
             <div class="stats-row">
                 <div class="stat-tile">
@@ -13,7 +14,11 @@ async function cargarPanel() {
                 </div>
                 <div class="stat-tile">
                     <div class="stat-label">En uso</div>
-                    <div class="stat-value" style="color:#dc3545">${enUso}</div>
+                    <div class="stat-value" style="color:#007bff">${enUso}</div>
+                </div>
+                <div class="stat-tile">
+                    <div class="stat-label">Fallas</div>
+                    <div class="stat-value" style="color:#dc3545">${enFalla}</div>
                 </div>
             </div>
         `;
@@ -33,12 +38,11 @@ async function cargarPanel() {
             `;
             puestos.forEach(p => {
                 htmlSalas += `<div class="puesto puesto-${p.estado}" title="Estado: ${p.estado}" onclick="window.location.href='detalle.html?id=${p.id}'">${p.id}</div>`;
-            });   
+            });           
             htmlSalas += `</div></div>`;
-        }       
+        }
         htmlSalas += '</div>';
         document.getElementById('salas-content').innerHTML = htmlSalas;
-
     } catch (error) {
         console.error("Error conectando a la API:", error);
         document.getElementById('dashboard-stats').innerHTML = `<p style="color:red">Error al conectar con la base de datos.</p>`;

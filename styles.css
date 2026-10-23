@@ -148,8 +148,8 @@ body {
 }
 
 .puesto-disponible { background-color: #28a745; } 
-.puesto-en_uso { background-color: #dc3545; } 
-.puesto-falla { background-color: #6c757d; } 
+.puesto-en_uso { background-color:  #6c757d ; } 
+.puesto-falla { background-color: #dc3545 ; } 
 
 table {
     width: 100%;
