@@ -1,44 +1,193 @@
 {
   "computadores": [
-    { "id": "G01", "sala": "General", "estado": "disponible", "motivo": "" },
-    { "id": "G02", "sala": "General", "estado": "disponible", "motivo": "" },
-    { "id": "G03", "sala": "General", "estado": "en_uso", "motivo": "Inicio de sesión" },
-    { "id": "G04", "sala": "General", "estado": "disponible", "motivo": "" },
-    { "id": "G05", "sala": "General", "estado": "en_uso", "motivo": "Inicio de sesión" },
-    { "id": "G06", "sala": "General", "estado": "disponible", "motivo": "" },
-    { "id": "G07", "sala": "General", "estado": "disponible", "motivo": "" },
-    { "id": "G08", "sala": "General", "estado": "disponible", "motivo": "" },
-    { "id": "G09", "sala": "General", "estado": "falla", "motivo": "No enciende" },
-    { "id": "G10", "sala": "General", "estado": "disponible", "motivo": "" },
-    
-    { "id": "P01", "sala": "Gamer", "estado": "en_uso", "motivo": "Inicio de sesión" },
-    { "id": "P02", "sala": "Gamer", "estado": "en_uso", "motivo": "Inicio de sesión" },
-    { "id": "P03", "sala": "Gamer", "estado": "en_uso", "motivo": "Inicio de sesión" },
-    { "id": "P04", "sala": "Gamer", "estado": "disponible", "motivo": "" },
-    { "id": "P05", "sala": "Gamer", "estado": "disponible", "motivo": "" },
-    { "id": "P06", "sala": "Gamer", "estado": "en_uso", "motivo": "Inicio de sesión" },
-    { "id": "P07", "sala": "Gamer", "estado": "disponible", "motivo": "" },
-    { "id": "P08", "sala": "Gamer", "estado": "falla", "motivo": "Teclado dañado" },
-    { "id": "P09", "sala": "Gamer", "estado": "disponible", "motivo": "" },
-    { "id": "P10", "sala": "Gamer", "estado": "disponible", "motivo": "" },
-    
-    { "id": "E01", "sala": "Grupal", "estado": "en_uso", "motivo": "Inicio de sesión" },
-    { "id": "E02", "sala": "Grupal", "estado": "en_uso", "motivo": "Inicio de sesión" },
-    { "id": "E03", "sala": "Grupal", "estado": "en_uso", "motivo": "Inicio de sesión" },
-    { "id": "E04", "sala": "Grupal", "estado": "disponible", "motivo": "" },
-    { "id": "E05", "sala": "Grupal", "estado": "disponible", "motivo": "" },
-    { "id": "E06", "sala": "Grupal", "estado": "disponible", "motivo": "" },
-    { "id": "E07", "sala": "Grupal", "estado": "disponible", "motivo": "" },
-    { "id": "E08", "sala": "Grupal", "estado": "disponible", "motivo": "" },
-    { "id": "E09", "sala": "Grupal", "estado": "disponible", "motivo": "" },
-    { "id": "E10", "sala": "Grupal", "estado": "disponible", "motivo": "" }
+    {
+      "id": "G01",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": "listo"
+    },
+    {
+      "id": "G02",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "G03",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": "arreglado"
+    },
+    {
+      "id": "G04",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "G05",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "G06",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "G07",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "G08",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "G09",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": "arreglado"
+    },
+    {
+      "id": "G10",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "P01",
+      "sala": "Gamer",
+      "estado": "disponible",
+      "motivo": "Inicio de sesión"
+    },
+    {
+      "id": "P02",
+      "sala": "Gamer",
+      "estado": "disponible",
+      "motivo": "listo"
+    },
+    {
+      "id": "P03",
+      "sala": "Gamer",
+      "estado": "disponible",
+      "motivo": "listo"
+    },
+    {
+      "id": "P04",
+      "sala": "Gamer",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "P05",
+      "sala": "Gamer",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "P06",
+      "sala": "Gamer",
+      "estado": "disponible",
+      "motivo": "listo"
+    },
+    {
+      "id": "P07",
+      "sala": "Gamer",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "P08",
+      "sala": "Gamer",
+      "estado": "disponible",
+      "motivo": "arreglado"
+    },
+    {
+      "id": "P09",
+      "sala": "Gamer",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "P10",
+      "sala": "Gamer",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "E01",
+      "sala": "Grupal",
+      "estado": "disponible",
+      "motivo": "listo"
+    },
+    {
+      "id": "E02",
+      "sala": "Grupal",
+      "estado": "disponible",
+      "motivo": "listo"
+    },
+    {
+      "id": "E03",
+      "sala": "Grupal",
+      "estado": "disponible",
+      "motivo": "listo"
+    },
+    {
+      "id": "E04",
+      "sala": "Grupal",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "E05",
+      "sala": "Grupal",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "E06",
+      "sala": "Grupal",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "E07",
+      "sala": "Grupal",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "E08",
+      "sala": "Grupal",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "E09",
+      "sala": "Grupal",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "E10",
+      "sala": "Grupal",
+      "estado": "disponible",
+      "motivo": ""
+    },
+    {
+      "id": "unHJhHNmrk0",
+      "sala": "General",
+      "estado": "disponible",
+      "motivo": ""
+    }
   ],
-  "sesiones": [
-    { "id": "1", "puesto": "G03", "cliente": "Sofía M.", "inicio": "14:30" },
-    { "id": "2", "puesto": "P01", "cliente": "Matías R.", "inicio": "14:10" }
-  ],
-  "incidencias": [
-    { "id": "1", "puesto": "G09", "descripcion": "No enciende", "fecha": "21/10/2026, 10:00:00" },
-    { "id": "2", "puesto": "P08", "descripcion": "Teclado dañado", "fecha": "21/10/2026, 11:30:00" }
-  ]
+  "sesiones": [],
+  "incidencias": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }
