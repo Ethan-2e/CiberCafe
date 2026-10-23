@@ -8,7 +8,6 @@
 </head>
 <body>
     <div id="sidebar-container"></div>
-    
     <div class="main">
         <header class="topbar">
             <div class="topbar-title">Panel operativo</div>
@@ -16,6 +15,32 @@
         <div class="content">
             <div id="dashboard-stats" style="margin-bottom: 20px;">
                 <h2>Cargando estado...</h2>
+            </div>
+            <div class="panel" style="margin-bottom: 20px;">
+                <h3 style="margin-top: 0; border-bottom: 1px solid #ddd; padding-bottom: 10px;">Gestión de Equipos</h3>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <form id="form-agregar-pc" style="flex: 1; min-width: 250px;">
+                        <div class="form-group">
+                            <label class="form-label">Añadir equipo a sala:</label>
+                            <select id="select-area-agregar" class="form-control" required>
+                                <option value="General">Sala General (Prefijo G)</option>
+                                <option value="Gamer">Sala Gamer (Prefijo P)</option>
+                                <option value="Grupal">Sala Grupal (Prefijo E)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="background-color: #28a745; width: 100%;">+ Crear nuevo puesto</button>
+                    </form>
+                    <form id="form-eliminar-pc" style="flex: 1; min-width: 250px;">
+                        <div class="form-group">
+                            <label class="form-label">Eliminar equipo existente:</label>
+                            <select id="select-pc-eliminar" class="form-control" required>
+                                <option value="">Cargando equipos...</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-danger" style="width: 100%;">- Borrar puesto seleccionado</button>
+                    </form>
+
+                </div>
             </div>
             <div id="salas-content"></div>
         </div>
