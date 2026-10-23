@@ -15,7 +15,7 @@ async function cargarPanel() {
                 </div>
                 <div class="stat-tile">
                     <div class="stat-label">En uso</div>
-                    <div class="stat-value" style="color:#6c757d">${enUso}</div>
+                    <div class="stat-value" style="color:#007bff">${enUso}</div>
                 </div>
                 <div class="stat-tile">
                     <div class="stat-label">Fallas</div>
@@ -40,41 +40,56 @@ async function cargarPanel() {
             puestos.sort((a, b) => a.id.localeCompare(b.id, undefined, {numeric: true}));
             puestos.forEach(p => {
                 htmlSalas += `<div class="puesto puesto-${p.estado}" title="Estado: ${p.estado}" onclick="window.location.href='detalle.html?id=${p.id}'">${p.id}</div>`;
-            });   
+            });
             htmlSalas += `</div></div>`;
         }
         htmlSalas += '</div>';
         document.getElementById('salas-content').innerHTML = htmlSalas;
-        let opcionesEliminar = '<option value="">Seleccione un equipo...</option>';
-        const todosOrdenados = [...computadoresActuales].sort((a,b) => a.id.localeCompare(b.id, undefined, {numeric: true}));
-        todosOrdenados.forEach(c => {
-            opcionesEliminar += `<option value="${c.id}">${c.id} (Sala ${c.sala})</option>`;
-        });
-        document.getElementById('select-pc-eliminar').innerHTML = opcionesEliminar;
+        actualizarSelectoresGestion();
     } catch (error) {
         console.error("Error conectando a la API:", error);
         document.getElementById('dashboard-stats').innerHTML = `<p style="color:red">Error al conectar con la base de datos.</p>`;
     }
 }
-function generarProximoId(sala) {
+function actualizarSelectoresGestion() {
+    let opcionesEliminar = '<option value="">Seleccione un equipo...</option>';
+    const todosOrdenados = [...computadoresActuales].sort((a,b) => a.id.localeCompare(b.id, undefined, {numeric: true}));
+    todosOrdenados.forEach(c => {
+        opcionesEliminar += `<option value="${c.id}">${c.id} (Sala ${c.sala})</option>`;
+    });
+    document.getElementById('select-pc-eliminar').innerHTML = opcionesEliminar;
     const prefijos = { 'General': 'G', 'Gamer': 'P', 'Grupal': 'E' };
-    const prefijo = prefijos[sala];
-    const pcsSala = computadoresActuales.filter(c => c.sala === sala);
-    const numeros = pcsSala.map(c => parseInt(c.id.replace(prefijo, ''))).sort((a, b) => a - b);
-    let proximoNum = 1;
-    for (let i = 0; i < numeros.length; i++) {
-        if (numeros[i] === proximoNum) {
-            proximoNum++; 
-        } else if (numeros[i] > proximoNum) {
-            break; 
+    let opcionesAgregar = '<option value="">Selecciona un código disponible...</option>';
+    for (const [sala, prefijo] of Object.entries(prefijos)) {
+        const pcsSala = computadoresActuales.filter(c => c.sala === sala);
+        const numeros = pcsSala.map(c => parseInt(c.id.replace(prefijo, ''))).sort((a, b) => a - b);
+        const maxNum = numeros.length > 0 ? Math.max(...numeros) : 0;
+        opcionesAgregar += `<optgroup label="Sala ${sala}">`;
+        for (let i = 1; i <= maxNum; i++) {
+            if (!numeros.includes(i)) {
+                const idFomateado = prefijo + i.toString().padStart(2, '0');
+                opcionesAgregar += `<option value="${idFomateado}" data-sala="${sala}">${idFomateado} (Espacio vacío)</option>`;
+            }
         }
-    }   
-    return prefijo + proximoNum.toString().padStart(2, '0');
+        for (let i = 1; i <= 2; i++) {
+            const numNuevo = maxNum + i;
+            const idFomateado = prefijo + numNuevo.toString().padStart(2, '0');
+            opcionesAgregar += `<option value="${idFomateado}" data-sala="${sala}">${idFomateado} (Nuevo código)</option>`;
+        }
+        opcionesAgregar += `</optgroup>`;
+    }
+    document.getElementById('select-id-agregar').innerHTML = opcionesAgregar;
 }
 document.getElementById('form-agregar-pc').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const salaSeleccionada = document.getElementById('select-area-agregar').value;
-    const nuevoId = generarProximoId(salaSeleccionada);
+    const selectElement = document.getElementById('select-id-agregar');
+    const nuevoId = selectElement.value;
+    if (!nuevoId) {
+        alert("Selecciona un código válido.");
+        return;
+    }
+    const optionSeleccionada = selectElement.options[selectElement.selectedIndex];
+    const salaSeleccionada = optionSeleccionada.getAttribute('data-sala');
     const nuevoPC = {
         id: nuevoId,
         sala: salaSeleccionada,
