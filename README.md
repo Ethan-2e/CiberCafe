@@ -1,3 +1,5 @@
-1.- Pasos para tener una instancia funciona en aws:
+1.- Pasos para tener una instancia funcionando en aws:
     -El repositorio dentro de /var/www/html/project debe haber sido actualizado con git pull
-    -Una vez ya actualizado, se debe usar "sudo json-server --watch db.json --port 3000 --host 0.0.0.0" para poder iniciar el backend local
+    -Una vez ya actualizado, se debe iniciar el backend con el json-server incluido en el proyecto (0.17.4):
+        sudo node node_modules/json-server/lib/cli/bin.js --watch db.json --port 3000 --host 0.0.0.0
+    -Importante: no usar el json-server global (v1), porque ignora los ids personalizados y genera ids aleatorios.
