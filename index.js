@@ -2,7 +2,7 @@ import { API_URL } from './api.js';
 let computadoresActuales = [];
 async function cargarPanel() {
     try {
-        const respuesta = await fetch(`${API_URL}/computadores`);
+        const respuesta = await fetch(`${API_URL}/computadores`, { cache: 'no-store' });
         computadoresActuales = await respuesta.json();
         const disponibles = computadoresActuales.filter(c => c.estado === 'disponible').length;
         const enUso = computadoresActuales.filter(c => c.estado === 'en_uso').length;
@@ -62,7 +62,13 @@ function actualizarSelectoresGestion() {
     let opcionesAgregar = '<option value="">Selecciona un código disponible...</option>';
     for (const [sala, prefijo] of Object.entries(prefijos)) {
         const pcsSala = computadoresActuales.filter(c => c.sala === sala);
-        const numeros = pcsSala.map(c => parseInt(c.id.replace(prefijo, ''))).sort((a, b) => a - b);
+        const numeros = pcsSala
+            .map(c => {
+                const m = String(c.id).match(new RegExp('^' + prefijo + '(\\d+)$'));
+                return m ? parseInt(m[1], 10) : null;
+            })
+            .filter(n => n !== null)
+            .sort((a, b) => a - b);
         const maxNum = numeros.length > 0 ? Math.max(...numeros) : 0;
         opcionesAgregar += `<optgroup label="Sala ${sala}">`;
         for (let i = 1; i <= maxNum; i++) {
@@ -88,6 +94,10 @@ document.getElementById('form-agregar-pc').addEventListener('submit', async (e) 
         alert("Selecciona un código válido.");
         return;
     }
+    if (!/^[GPE]\d{2,}$/.test(nuevoId) || computadoresActuales.some(c => c.id === nuevoId)) {
+        alert("Código inválido o ya existente. Actualiza la página e inténtalo de nuevo.");
+        return;
+    }
     const optionSeleccionada = selectElement.options[selectElement.selectedIndex];
     const salaSeleccionada = optionSeleccionada.getAttribute('data-sala');
     const nuevoPC = {
@@ -97,11 +107,12 @@ document.getElementById('form-agregar-pc').addEventListener('submit', async (e) 
         motivo: ""
     };
     try {
-        await fetch(`${API_URL}/computadores`, {
+        const respuesta = await fetch(`${API_URL}/computadores`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(nuevoPC)
         });
+        if (!respuesta.ok) throw new Error('No se pudo crear el equipo');
         alert(`Éxito: Se ha creado el puesto ${nuevoId} en la Sala ${salaSeleccionada}.`);
         cargarPanel();
     } catch (error) {
