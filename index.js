@@ -1,4 +1,6 @@
 import { API_URL } from './api.js';
+const ID_RE = /^[GPE]\d{2,}$/;
+const PREFIJOS = { General: 'G', Gamer: 'P', Grupal: 'E' };
 let computadoresActuales = [];
 async function cargarPanel() {
     try {
@@ -51,6 +53,76 @@ async function cargarPanel() {
         document.getElementById('dashboard-stats').innerHTML = `<p style="color:red">Error al conectar con la base de datos.</p>`;
     }
 }
+function numerosDeSala(lista, sala) {
+    const prefijo = PREFIJOS[sala];
+    return lista
+        .filter(c => c.sala === sala)
+        .map(c => {
+            const m = String(c.id).match(new RegExp('^' + prefijo + '(\\d+)$'));
+            return m ? parseInt(m[1], 10) : null;
+        })
+        .filter(n => Number.isFinite(n));
+}
+function siguienteLibre(lista, sala) {
+    const usados = new Set(numerosDeSala(lista, sala));
+    let n = 1;
+    while (usados.has(n)) n++;
+    return PREFIJOS[sala] + n.toString().padStart(2, '0');
+}
+async function obtenerComputadores() {
+    const r = await fetch(`${API_URL}/computadores`, { cache: 'no-store' });
+    if (!r.ok) throw new Error('No se pudo leer la lista de equipos');
+    return r.json();
+}
+async function crearPuesto(sala, codigoPreferido) {
+    for (let intento = 0; intento < 3; intento++) {
+        const lista = await obtenerComputadores();
+        const existentes = new Set(lista.map(c => String(c.id)));
+        const codigo = (codigoPreferido && ID_RE.test(codigoPreferido) && !existentes.has(codigoPreferido))
+            ? codigoPreferido
+            : siguienteLibre(lista, sala);
+        const res = await fetch(`${API_URL}/computadores`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: codigo, sala: sala, estado: 'disponible', motivo: '' })
+        });
+        if (!res.ok) {
+            codigoPreferido = null;
+            continue;
+        }
+        const creado = await res.json();
+        if (String(creado.id) === codigo) return codigo;
+        await fetch(`${API_URL}/computadores/${encodeURIComponent(creado.id)}`, { method: 'DELETE' });
+        codigoPreferido = null;
+    }
+    throw new Error('No se pudo crear un código válido');
+}
+async function repararCodigos() {
+    const lista = await obtenerComputadores();
+    const invalidos = lista.filter(c => !ID_RE.test(String(c.id)));
+    for (const c of invalidos) {
+        await fetch(`${API_URL}/computadores/${encodeURIComponent(c.id)}`, { method: 'DELETE' });
+    }
+    const validos = new Set(lista.filter(c => ID_RE.test(String(c.id))).map(c => String(c.id)));
+    const [sesiones, incidencias] = await Promise.all([
+        fetch(`${API_URL}/sesiones`, { cache: 'no-store' }).then(r => r.json()),
+        fetch(`${API_URL}/incidencias`, { cache: 'no-store' }).then(r => r.json())
+    ]);
+    let huerfanos = 0;
+    for (const s of sesiones) {
+        if (!validos.has(String(s.puesto))) {
+            await fetch(`${API_URL}/sesiones/${s.id}`, { method: 'DELETE' });
+            huerfanos++;
+        }
+    }
+    for (const i of incidencias) {
+        if (!validos.has(String(i.puesto))) {
+            await fetch(`${API_URL}/incidencias/${i.id}`, { method: 'DELETE' });
+            huerfanos++;
+        }
+    }
+    return { equipos: invalidos.length, huerfanos };
+}
 function actualizarSelectoresGestion() {
     let opcionesEliminar = '<option value="">Seleccione un equipo...</option>';
     const todosOrdenados = [...computadoresActuales].sort((a,b) => a.id.localeCompare(b.id, undefined, {numeric: true}));
@@ -58,17 +130,9 @@ function actualizarSelectoresGestion() {
         opcionesEliminar += `<option value="${c.id}">${c.id} (Sala ${c.sala})</option>`;
     });
     document.getElementById('select-pc-eliminar').innerHTML = opcionesEliminar;
-    const prefijos = { 'General': 'G', 'Gamer': 'P', 'Grupal': 'E' };
     let opcionesAgregar = '<option value="">Selecciona un código disponible...</option>';
-    for (const [sala, prefijo] of Object.entries(prefijos)) {
-        const pcsSala = computadoresActuales.filter(c => c.sala === sala);
-        const numeros = pcsSala
-            .map(c => {
-                const m = String(c.id).match(new RegExp('^' + prefijo + '(\\d+)$'));
-                return m ? parseInt(m[1], 10) : null;
-            })
-            .filter(n => n !== null)
-            .sort((a, b) => a - b);
+    for (const [sala, prefijo] of Object.entries(PREFIJOS)) {
+        const numeros = numerosDeSala(computadoresActuales, sala).sort((a, b) => a - b);
         const maxNum = numeros.length > 0 ? Math.max(...numeros) : 0;
         opcionesAgregar += `<optgroup label="Sala ${sala}">`;
         for (let i = 1; i <= maxNum; i++) {
@@ -94,32 +158,41 @@ document.getElementById('form-agregar-pc').addEventListener('submit', async (e) 
         alert("Selecciona un código válido.");
         return;
     }
-    if (!/^[GPE]\d{2,}$/.test(nuevoId) || computadoresActuales.some(c => c.id === nuevoId)) {
-        alert("Código inválido o ya existente. Actualiza la página e inténtalo de nuevo.");
-        return;
-    }
     const optionSeleccionada = selectElement.options[selectElement.selectedIndex];
     const salaSeleccionada = optionSeleccionada.getAttribute('data-sala');
-    const nuevoPC = {
-        id: nuevoId,
-        sala: salaSeleccionada,
-        estado: "disponible",
-        motivo: ""
-    };
+    if (!salaSeleccionada) {
+        alert("Selecciona una sala válida.");
+        return;
+    }
     try {
-        const respuesta = await fetch(`${API_URL}/computadores`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(nuevoPC)
-        });
-        if (!respuesta.ok) throw new Error('No se pudo crear el equipo');
-        alert(`Éxito: Se ha creado el puesto ${nuevoId} en la Sala ${salaSeleccionada}.`);
+        const codigo = await crearPuesto(salaSeleccionada, nuevoId);
+        alert(`Éxito: Se ha creado el puesto ${codigo} en la Sala ${salaSeleccionada}.`);
         cargarPanel();
     } catch (error) {
         console.error(error);
         alert('Hubo un error al crear el equipo.');
     }
 });
+const btnRepararCodigos = document.getElementById('btn-reparar-codigos');
+if (btnRepararCodigos) {
+    btnRepararCodigos.addEventListener('click', async () => {
+        btnRepararCodigos.disabled = true;
+        try {
+            const { equipos, huerfanos } = await repararCodigos();
+            if (equipos === 0 && huerfanos === 0) {
+                alert('No se encontraron códigos inválidos.');
+            } else {
+                alert(`Se eliminaron ${equipos} equipos inválidos y ${huerfanos} registros huérfanos.`);
+            }
+            cargarPanel();
+        } catch (error) {
+            console.error(error);
+            alert('Hubo un error al reparar los códigos.');
+        } finally {
+            btnRepararCodigos.disabled = false;
+        }
+    });
+}
 document.getElementById('form-eliminar-pc').addEventListener('submit', async (e) => {
     e.preventDefault();
     const pcId = document.getElementById('select-pc-eliminar').value;
@@ -130,7 +203,7 @@ document.getElementById('form-eliminar-pc').addEventListener('submit', async (e)
     const confirmar = confirm(`¿Estás seguro de que deseas eliminar permanentemente el puesto ${pcId}?`);
     if (!confirmar) return;
     try {
-        await fetch(`${API_URL}/computadores/${pcId}`, {
+        await fetch(`${API_URL}/computadores/${encodeURIComponent(pcId)}`, {
             method: 'DELETE'
         });
         alert(`El puesto ${pcId} ha sido eliminado.`);
