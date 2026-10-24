@@ -17,7 +17,7 @@ async function cargarPanel() {
                 </div>
                 <div class="stat-tile">
                     <div class="stat-label">En uso</div>
-                    <div class="stat-value" style="color:#007bff">${enUso}</div>
+                    <div class="stat-value" style="color:#6c757d">${enUso}</div>
                 </div>
                 <div class="stat-tile">
                     <div class="stat-label">Fallas</div>

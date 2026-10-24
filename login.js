@@ -22,9 +22,12 @@ document.getElementById('form-login').addEventListener('submit', (e) => {
         errorEmail.innerText = 'Debes ingresar un correo electrónico válido.';
         esValido = false;
     }
-    if (inputPassword.value.trim() === '') {
+    const passwordValor = inputPassword.value.trim();
+
+    if (passwordValor.length < 8 || passwordValor.length > 16) {
         inputPassword.classList.add('input-error');
         errorPassword.style.display = 'block';
+        errorPassword.innerText = 'La contraseña debe tener entre 8 y 16 caracteres.';
         esValido = false;
     }
     
