@@ -15,3 +15,9 @@
         -Nueva Sesion: Para asignar sesiones a los usuarios nuevos.
         -Historeial de sesiones activas: permite gestionarlas y finalizarlas si se desea.
         -Incidencias: Esta página es para mostrar las incidencias activas y añadir o eliminarlas.
+
+Integrante 1: Vicente Méndez
+Integrante 2: Ethan Pérez
+Integrante 3: Valeria Meza
+Repositorio: https://github.com/Ethan-2e/CiberCafe
+Link página: http://100.51.163.177
