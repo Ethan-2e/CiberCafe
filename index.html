@@ -44,6 +44,29 @@
                 </div>
             </div>
             <div id="salas-content"></div>
+            <div class="panel" style="margin-top: 20px;">
+    <h3 style="margin-top: 0; border-bottom: 1px solid #ddd; padding-bottom: 10px;">Comentarios de equipos</h3>
+    <form id="form-comentario">
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <div class="form-group" style="flex: 1; min-width: 180px;">
+                <label class="form-label">Equipo:</label>
+                <select id="select-puesto-comentario" class="form-control" required>
+                    <option value="">Cargando equipos...</option>
+                </select>
+            </div>
+            <div class="form-group" style="flex: 1; min-width: 180px;">
+                <label class="form-label">Tu nombre:</label>
+                <input id="input-autor" class="form-control" type="text" maxlength="40" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Comentario:</label>
+            <textarea id="input-comentario" class="form-control" rows="3" maxlength="300" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Publicar comentario</button>
+    </form>
+    <div id="lista-comentarios" style="margin-top: 20px;"></div>
+</div>
         </div>
     </div>
 
