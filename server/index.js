@@ -22,8 +22,15 @@ const origenes = (process.env.CLIENT_ORIGIN || '')
   .map((o) => o.trim())
   .filter(Boolean);
 
+const esLocal = (origen) => /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origen);
+
 app.use(cors({
-  origin: origenes.length > 0 ? origenes : true,
+  origin(origen, callback) {
+    if (!origen || origenes.length === 0 || origenes.includes(origen) || esLocal(origen)) {
+      return callback(null, true);
+    }
+    return callback(null, false);
+  },
   credentials: true
 }));
 
