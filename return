@@ -1,0 +1,29 @@
+* [33m6f56bd9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mpanel-v2[m[33m, [m[1;31morigin/panel-v2[m[33m)[m Actualizacion del README.md
+* [33m0253cb0[m Elimina la version anterior sin react
+[31m|[m * [33m07d898a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Panel operativo simple (error de api, nse pk)
+[31m|[m * [33m2ef7dad[m Subida de README.md
+[31m|[m * [33m7fc930d[m archivos para iniciar proyecto limpio
+[31m|[m * [33m27078c3[m instalaciuion de json server
+[31m|[m * [33mc7cdac6[m Limpieza de entregable
+[31m|[m [32m|[m * [33m7e19301[m[33m ([m[1;35mrefs/stash[m[33m)[m WIP on panel-v2: 94ac11a Se cambian y corrigen los estados de color de la pagina y adiciones menores. Se arregla el css relacionado al login.
+[31m|[m [32m|[m[31m/[m[34m|[m 
+[31m|[m[31m/[m[32m|[m [34m|[m 
+[31m|[m [32m|[m * [33mdef7775[m index on panel-v2: 94ac11a Se cambian y corrigen los estados de color de la pagina y adiciones menores. Se arregla el css relacionado al login.
+[31m|[m [32m|[m[31m/[m  
+[31m|[m[31m/[m[32m|[m   
+* [32m|[m [33m94ac11a[m Se cambian y corrigen los estados de color de la pagina y adiciones menores. Se arregla el css relacionado al login.
+* [32m|[m [33m4df1982[m Se crea el apartado login, se necesita una password de min 6 caracteres. Ademas se añade un boton para cerrar secion.
+* [32m|[m [33m06961e0[m Se agrega un boton para agregar y eliminar pcs. No hay tope al momento de agregar.
+* [32m|[m [33mc45c1ae[m Se crea la opcion de seleccionar pc que actua vomo boton, al abrirlo se desplega un menu con las especificaciones del equipo y la opcion de cambiar su estado.
+* [32m|[m [33ma8e5d98[m Se crea la seccion Filtros dentro de src/components/, la cual filtra por estado actual de cada pc. Se modifica el archivo App.jsx, Sala.jsx, y styles.css.
+* [32m|[m [33m53a9760[m Se crean carpetas especificas para separar el html en segmentos dedicados.
+* [32m|[m [33m6990e03[m Correccion de visualizacion de estados de PCs en zona general, y creacion de nuevo proyecto react en la carpeta de frontend.
+* [32m|[m [33m2715edc[m Correciones minimas.
+* [32m|[m [33m72f5766[m Se añade zona general con todos los pc con diferentes estados. Ademas de cambios minimos en el css.
+* [32m|[m [33m9cb7424[m Correciones minimas.
+* [32m|[m [33m3fe731c[m Se realizan cambios menores de correccion en palabras y texto especifico.
+* [32m|[m [33m8ce471a[m Cambios en el css, estilo visual de estados pc agregado.
+* [32m|[m [33mc0073d1[m Creacion de barra superior y distribucion de estados en los pc. Ademas de modificaciones en el css sobre colores y reacomodo de bloques.
+* [32m|[m [33m8a00896[m Se realizan cambios menores.
+* [32m|[m [33m3244483[m Cambios menores al posicionamiento del texto en login.
+* [32m|[m [33m155a45d[m Se estiliza boton de login.
